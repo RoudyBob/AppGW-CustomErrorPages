@@ -18,10 +18,10 @@
       "value": 2
     },
     "backendIpAddress1": {
-      "value": "amitubuntu15.cloudapp.net"
+      "value": "bobroud-web01.azurewebsites.net"
     },
     "backendIpAddress2": {
-      "value": "amitubuntu16.cloudapp.net"
+      "value": "bobroud-web02.azurewebsites.net"
     }
   }
 }

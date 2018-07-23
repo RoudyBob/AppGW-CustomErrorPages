@@ -22,8 +22,8 @@
         "Standard_Small",
         "Standard_Medium",
         "Standard_Large",
-		"WAF_Medium",
-		"WAF_Large"
+		    "WAF_Medium",
+		    "WAF_Large"
       ],
       "defaultValue": "WAF_Medium",
       "metadata": {
@@ -271,11 +271,11 @@
 		"CustomErrorConfigurations": [
 			{
 				"StatusCode": 403,
-				"CustomErrorPageUrl": "https://mycustomerrorpages.blob.core.windows.net/errorpages/403.htm"
+				"CustomErrorPageUrl": "https://bobroudcustomerrorpages.blob.core.windows.net/errorpages/403.html"
 			},
 			{
 				"StatusCode": 502,
-				"CustomErrorPageUrl": "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+				"CustomErrorPageUrl": "https://bobroudcustomerrorpages.blob.core.windows.net/errorpages/502.html"
 			}
 		]
       }
