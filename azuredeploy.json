@@ -58,9 +58,9 @@
     }
   },
   "variables": {
-    "applicationGatewayName": "appGwCustomErrorPagesTest1",
-    "publicIPAddressName": "publicIp1",
-    "virtualNetworkName": "virtualNetwork1",
+    "applicationGatewayName": "appGwCustomErrorPagesTest",
+    "publicIPAddressName": "publicIp",
+    "virtualNetworkName": "virtualNetwork",
     "subnetName": "appGatewaySubnet",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
@@ -168,11 +168,11 @@
 			"name": "appGatewayProbe1",
 			"properties": {
 				"Protocol": "Http",
-				"Host": "localhost",
 				"Path": "/",
 				"Interval": 40,
 				"Timeout": 30,
-				"UnhealthyThreshold": 3
+        "UnhealthyThreshold": 3,
+        "pickHostNameFromBackendHttpSettings": true
 			}
 		}
 		],
@@ -183,10 +183,11 @@
               "Port": 80,
               "Protocol": "Http",
               "CookieBasedAffinity": "Disabled",
-			  "RequestTimeout": 30,
-			  "Probe": {
-				"Id": "[concat(variables('applicationGatewayID'), '/probes/appGatewayProbe1')]"
-			  }
+			        "RequestTimeout": 30,
+			        "Probe": {
+				        "Id": "[concat(variables('applicationGatewayID'), '/probes/appGatewayProbe1')]"
+              },
+              "pickHostNameFromBackendAddress": true
             }
           }
         ],
@@ -202,12 +203,12 @@
               },
               "Protocol": "Http",
               "SslCertificate": null,
-				"CustomErrorConfigurations": [
-				{
-					"StatusCode": 403,
-					"CustomErrorPageUrl": "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-				}
-			]
+				      "CustomErrorConfigurations": [
+				        {
+                "StatusCode": 502,
+					      "CustomErrorPageUrl": "https://bobroudcustomerrorpages.blob.core.windows.net/errorpages/502.html"
+				        }
+			        ]
             }
           },
           {
@@ -221,12 +222,12 @@
               },
               "Protocol": "Http",
               "SslCertificate": null,
-				"CustomErrorConfigurations": [
-				{
-					"StatusCode": 502,
-					"CustomErrorPageUrl": "https://mycustomerrorpages.blob.core.windows.net/errorpages/502-another.htm"
-				}
-			]
+				      "CustomErrorConfigurations": [
+				        {
+                  "StatusCode": 403,
+                  "CustomErrorPageUrl": "https://bobroudcustomerrorpages.blob.core.windows.net/errorpages/403.html"
+				        }
+			        ]       
             }
           }
         ],
